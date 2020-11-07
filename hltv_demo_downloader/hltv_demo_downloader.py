@@ -2,7 +2,7 @@ import os, time, json
 from selenium.webdriver import Chrome
 from selenium.webdriver.support.ui import WebDriverWait
 
-driver = Chrome('/home/meulindx/selenium/tutorial/chromedriver.exe')
+driver = Chrome('chromedriver.exe')
 
 hltv_root = 'https://www.hltv.org'
 f = open('links_separados_todas_as_partidas_hltv.json',)
