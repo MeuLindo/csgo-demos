@@ -7,6 +7,7 @@ driver = Chrome('chromedriver.exe')
 hltv_root = 'https://www.hltv.org'
 f = open('links_separados_todas_as_partidas_hltv.json',)
 todas_as_partidas_urls = json.load(f)
+todas_as_partidas_urls = todas_as_partidas_urls[57:]
 todas_as_partidas_urls.pop(0) # primeiro index é só /matches
 partidas_baixadas = []
 
@@ -17,11 +18,15 @@ for partida in todas_as_partidas_urls:
     print(hltv_root + partida)
     
     gotv_demo = driver.find_element_by_css_selector('body > div.bgPadding > div > div.colCon > div.contentCol > div.match-page > div.g-grid.maps > div.col-6.col-5-small > div > div:nth-child(1) > a')
-    gotv_demo.click()
 
-    time.sleep(20)
-    
+    if gotv_demo:
+        gotv_demo.click()
+        time.sleep(10)
+    else:
+        pass
+        
     wait = True
+
     while wait:
         lista_de_arquivos = os.scandir('/mnt/c/Users/alexa/Downloads')
         counter = 0
@@ -39,3 +44,5 @@ for partida in todas_as_partidas_urls:
             print('Partida baixada.')
 
 driver.quit()
+
+
