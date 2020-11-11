@@ -7,7 +7,7 @@ driver = Chrome('chromedriver.exe')
 hltv_root = 'https://www.hltv.org'
 f = open('links_separados_todas_as_partidas_hltv.json',)
 todas_as_partidas_urls = json.load(f)
-todas_as_partidas_urls = todas_as_partidas_urls[63:]
+todas_as_partidas_urls = todas_as_partidas_urls[603:]
 todas_as_partidas_urls.pop(0) # primeiro index é só /matches
 partidas_baixadas = []
 
