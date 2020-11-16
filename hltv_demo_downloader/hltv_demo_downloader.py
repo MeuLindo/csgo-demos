@@ -2,19 +2,27 @@ import os, time, json
 from selenium.webdriver import Chrome
 from selenium.webdriver.support.ui import WebDriverWait
 
+
 driver = Chrome('chromedriver.exe')
 
 hltv_root = 'https://www.hltv.org'
+
 f = open('links_separados_todas_as_partidas_hltv.json',)
+
 todas_as_partidas_urls = json.load(f)
-todas_as_partidas_urls = todas_as_partidas_urls[603:]
+todas_as_partidas_urls = todas_as_partidas_urls[852:]
 todas_as_partidas_urls.pop(0) # primeiro index é só /matches
 partidas_baixadas = []
 
+
 for partida in todas_as_partidas_urls:
+    
     driver.get(hltv_root + partida)
+
     time.sleep(10)
+    
     partidas_baixadas = todas_as_partidas_urls.pop(0)
+
     print(hltv_root + partida)
     
     try:
@@ -22,7 +30,7 @@ for partida in todas_as_partidas_urls:
         gotv_demo.click()
         print(f'Baixando: {partida}')
         time.sleep(10)
-    except:
+    except: 
         print(f'Não achei a demo para a partida: {partida}')
         time.sleep(10)
         pass
